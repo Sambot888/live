@@ -44,3 +44,27 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 The stash entry is kept in case you need it again.
+[START] Git 强制同步开始 
+当前时间: 周二 2025/04/29 23:04:25.96 
+✅ 正在暂存当前更改 (stash) ... 
+Saved working directory and index state WIP on main: b967db5 auto: force sync and push
+error: unable to unlink old 'git_sync_log.txt': Invalid argument
+fatal: Could not reset index file to revision 'HEAD'.
+🔁 正在执行 git pull --rebase ... 
+error: cannot pull with rebase: You have unstaged changes.
+error: Please commit or stash them.
+🔄 正在恢复暂存更改 (stash pop) ... 
+error: Your local changes to the following files would be overwritten by merge:
+	git_sync_log.txt
+Please commit your changes or stash them before you merge.
+Aborting
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   git_sync_log.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+The stash entry is kept in case you need it again.
