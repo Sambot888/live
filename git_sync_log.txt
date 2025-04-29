@@ -3,3 +3,20 @@
 ✅ 已检测到 Git 仓库，开始同步操作... 
 error: cannot pull with rebase: You have unstaged changes.
 error: Please commit or stash them.
+warning: in the working copy of 'update_tokens.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'configure_git_identity.bat', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'git_sync_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main 2e5b72f] auto: sync and push
+ 4 files changed, 44 insertions(+), 2 deletions(-)
+ create mode 100644 configure_git_identity.bat
+ create mode 100644 fix_and_push_clean.bat
+ create mode 100644 git_sync_log.txt
+To https://github.com/sambot888/live.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/sambot888/live.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+✅ Git 同步操作已完成。 
