@@ -20,18 +20,25 @@ try:
         print("[gmgn_proxy] Empty or invalid token list.")
         exit()
 
-    # 仅保留关键字段，最多取前50个
     tokens = []
-    for item in raw_data[:50]:
-        tokens.append({
-            "token_address": item.get("address", ""),
-            "symbol": item.get("symbol", ""),
-            "token_name": item.get("name", "")
-        })
+    for item in raw_data:
+        address = item.get("address") or item.get("tokenAddress") or ""
+        symbol = item.get("symbol") or ""
+        name = item.get("name") or ""
 
-    print(f"[gmgn_proxy] ✅ Pulled {len(tokens)} tokens from DEXScreener")
+        if address.strip() and symbol.strip() and name.strip():
+            tokens.append({
+                "token_address": address,
+                "symbol": symbol,
+                "token_name": name
+            })
 
-    # 检查是否有变更
+    if not tokens:
+        print("[gmgn_proxy] ❌ No valid tokens extracted.")
+        exit()
+
+    print(f"[gmgn_proxy] ✅ Extracted {len(tokens)} valid tokens from DEXScreener")
+
     if os.path.exists(OUTPUT_PATH):
         with open(OUTPUT_PATH, "r", encoding="utf-8") as f:
             existing = json.load(f)
