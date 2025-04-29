@@ -1,0 +1,5 @@
+[START] Git 自动同步开始 
+当前时间: 周二 2025/04/29 22:59:36.93 
+✅ 已检测到 Git 仓库，开始同步操作... 
+error: cannot pull with rebase: You have unstaged changes.
+error: Please commit or stash them.
