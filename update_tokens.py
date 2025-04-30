@@ -3,26 +3,31 @@ import json
 
 def update_tokens_from_jupiter():
     try:
+        # Jupiter API 获取 Solana 上的代币列表
         url = "https://quote-api.jup.ag/v6/tokens"
         response = requests.get(url)
-        tokens = response.json()
+        
+        # 如果返回的数据正常
+        if response.status_code == 200:
+            tokens = response.json()
+            cleaned = []
+            for token in tokens["tokens"]:
+                cleaned.append({
+                    "token_address": token["address"],
+                    "symbol": token["symbol"],
+                    "token_name": token["name"]
+                })
 
-        cleaned = []
-        for token in tokens["tokens"]:
-            cleaned.append({
-                "token_address": token["address"],
-                "symbol": token["symbol"],
-                "token_name": token["name"]
-            })
+            # 存储有效的代币数据
+            with open("live.json", "w", encoding="utf-8") as f:
+                json.dump(cleaned, f, indent=4, ensure_ascii=False)
 
-        # 写入到 live.json
-        with open("live.json", "w", encoding="utf-8") as f:
-            json.dump(cleaned, f, indent=2, ensure_ascii=False)
+            print(f"✅ 已拉取 Jupiter 上线代币共 {len(cleaned)} 条，已写入 live.json")
 
-        print(f"✅ 已拉取 Jupiter 上线代币共 {len(cleaned)} 条，已写入 live.json")
-
+        else:
+            print("[Jupiter] ❌ 请求失败，状态码:", response.status_code)
     except Exception as e:
         print(f"❌ 拉取失败: {str(e)}")
 
 if __name__ == "__main__":
-    update_tokens_f
+    update_tokens_from_jupiter()
