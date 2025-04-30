@@ -7,9 +7,13 @@ def update_tokens_from_jupiter():
         url = "https://quote-api.jup.ag/v6/tokens"
         response = requests.get(url)
         
+        print(f"请求返回状态码: {response.status_code}")  # 打印返回状态码
+        
         # 如果返回的数据正常
         if response.status_code == 200:
             tokens = response.json()
+            print(f"返回的数据: {tokens}")  # 打印返回数据
+            
             cleaned = []
             for token in tokens["tokens"]:
                 cleaned.append({
