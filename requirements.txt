@@ -1,0 +1,1 @@
+# No third-party requirements for MVP skeleton.
